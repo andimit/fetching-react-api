@@ -19,7 +19,8 @@ var App = function ( _React$Component )
         var _this = _possibleConstructorReturn( this, ( App.__proto__ || Object.getPrototypeOf( App ) ).call( this ) );
 
         _this.state = {
-            data: []
+            rows: [],
+            columns: []
         };
         return _this;
     }
@@ -30,14 +31,12 @@ var App = function ( _React$Component )
         {
             var _this2 = this;
 
-            fetch( 'http://ickata.net/sag/api/staff/bonuses/' ).then( function ( response )
+            fetch( "http://ickata.net/sag/api/staff/bonuses/" ).then( function ( response )
             {
                 return response.json();
             } ).then( function ( data )
             {
-                console.log( data.rows );
-                console.log( data.columns );
-                _this2.setState( { data: data.rows } ); _this2.setState( { data: data.columns } );
+                _this2.setState( { rows: data.rows, columns: data.columns } );
             } );
         }
     }, {
@@ -45,7 +44,7 @@ var App = function ( _React$Component )
         value: function render()
         {
 
-            this.state.data.map( function ( dynamicData, key )
+            this.state.columns.map( function ( dynamicData, key )
             {
                 var data = [{
                     columns: [0], this: dynamicData.fullName
@@ -76,87 +75,72 @@ var App = function ( _React$Component )
                 'div',
                 { id: 'container', className: 'container' },
                 React.createElement(
-                    'div',
-                    { id: 'rows', className: 'rows' },
+                    'h1',
+                    null,
+                    'Final Table'
+                ),
+                React.createElement(
+                    'table',
+                    { className: 'table' },
                     React.createElement(
-                        'div',
-                        { id: 'columns', className: 'columns' },
+                        'thead',
+                        null,
                         React.createElement(
-                            'h1',
-                            { className: 'title' },
-                            'Final Table'
-                        ),
-                        React.createElement(
-                            'table',
-                            { className: 'table' },
+                            'tr',
+                            null,
                             React.createElement(
-                                'thead',
+                                'th',
                                 null,
-                                React.createElement(
-                                    'tr',
-                                    null,
-                                    React.createElement(
-                                        'th',
-                                        null,
-                                        'Full Name'
-                                    ),
-                                    React.createElement(
-                                        'th',
-                                        null,
-                                        'Job Title'
-                                    ),
-                                    React.createElement(
-                                        'th',
-                                        null,
-                                        'Age'
-                                    ),
-                                    React.createElement(
-                                        'th',
-                                        null,
-                                        'Bonus'
-                                    )
-                                )
+                                'Full Name'
                             ),
                             React.createElement(
-                                'tbody',
+                                'th',
                                 null,
-                                ' ',
-                                this.state.data.map( function ( dynamicData )
-                                {
-                                    return React.createElement(
-                                        'tr',
-                                        { className: 'trow' },
-                                        React.createElement(
-                                            'td',
-                                            null,
-                                            ' ',
-                                            dynamicData.fullName
-                                        ),
-                                        React.createElement(
-                                            'td',
-                                            null,
-                                            ' ',
-                                            dynamicData.jobTitile,
-                                            ' '
-                                        ),
-                                        React.createElement(
-                                            'td',
-                                            null,
-                                            ' ',
-                                            dynamicData.age,
-                                            ' '
-                                        ),
-                                        React.createElement(
-                                            'td',
-                                            null,
-                                            ' ',
-                                            dynamicData.bonus,
-                                            ' '
-                                        )
-                                    );
-                                } )
+                                'Job Title'
+                            ),
+                            React.createElement(
+                                'th',
+                                null,
+                                'Age'
+                            ),
+                            React.createElement(
+                                'th',
+                                null,
+                                'Bonus'
                             )
                         )
+                    ),
+                    React.createElement(
+                        'tbody',
+                        null,
+                        ' ',
+                        this.state.rows.map( function ( row )
+                        {
+                            return React.createElement(
+                                'tr',
+                                null,
+                                React.createElement(
+                                    'td',
+                                    null,
+                                    row[0]
+                                ),
+                                React.createElement(
+                                    'td',
+                                    null,
+                                    row[1]
+                                ),
+                                React.createElement(
+                                    'td',
+                                    null,
+                                    row[2]
+                                ),
+                                React.createElement(
+                                    'td',
+                                    null,
+                                    row[3]
+                                )
+                            );
+                        } )
                     )
                 )
             );

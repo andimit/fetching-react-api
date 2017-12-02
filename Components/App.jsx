@@ -4,24 +4,31 @@ class App extends React.Component
     {
         super();
         this.state = {
-            data: [],
+            rows: [],
+            columns: []
         }
     }
 
     componentDidMount()
     {
-        fetch('http://ickata.net/sag/api/staff/bonuses/').then(function (response) {return response.json();
-}).then((data) => {
-    console.log( data.rows );
-    console.log( data.columns )
-    this.setState({ data: data.rows});this.setState({ data: data.columns }) }); 
+
+        fetch( "http://ickata.net/sag/api/staff/bonuses/" )
+            .then( function ( response )
+            {
+                return response.json();
+            } )
+            .then( data =>
+            {
+             this.setState( { rows: data.rows, columns: data.columns } );
+            } );
+
     }
 
 
     render()
     {
 
-        this.state.data.map(( dynamicData, key ) =>
+        this.state.columns.map(( dynamicData, key ) =>
         {
             const data = [{
                 columns: [0], this: dynamicData.fullName
@@ -59,9 +66,7 @@ class App extends React.Component
 
         return (
             <div id="container" className="container">
-                <div id="rows" className="rows">
-                    <div id="columns" className="columns">
-                        <h1 className="title">Final Table</h1>
+                <h1>Final Table</h1>
                         <table className="table">
                             <thead>
                                 <tr>
@@ -72,22 +77,18 @@ class App extends React.Component
                                 </tr>
                             </thead>
                             <tbody> {
-
-                                this.state.data.map(( dynamicData ) => (
-                                    <tr className="trow">
-                                    <td> {dynamicData.fullName}</td>
-                                    <td> {dynamicData.jobTitile} </td>
-                                    <td> {dynamicData.age} </td>
-                                    <td> {dynamicData.bonus} </td>
-                                </tr>
-                                    ))
-}
+                                this.state.rows.map(( row ) => (
+                                    <tr>
+                                        <td>{row[0]}</td>
+                                        <td>{row[1]}</td>
+                                        <td>{row[2]}</td>
+                                        <td>{row[3]}</td>
+                                    </tr>
+                                ) )
+                            }
                             </tbody>
-
                         </table>
                     </div>
-                </div>
-            </div >
         )
     }
 }
