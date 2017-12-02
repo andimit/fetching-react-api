@@ -24,7 +24,7 @@ class App extends React.Component
         this.state.data.map(( dynamicData, key ) =>
         {
             const data = [{
-                columns: [0], this: dynaimcData.fullName
+                columns: [0], this: dynamicData.fullName
             },
             {
                 columns: [1], this: dynamicData.jobTitile

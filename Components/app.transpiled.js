@@ -1,20 +1,22 @@
 'use strict';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = function () { function defineProperties( target, props ) { for ( var i = 0; i < props.length; i++ ) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ( "value" in descriptor ) descriptor.writable = true; Object.defineProperty( target, descriptor.key, descriptor ); } } return function ( Constructor, protoProps, staticProps ) { if ( protoProps ) defineProperties( Constructor.prototype, protoProps ); if ( staticProps ) defineProperties( Constructor, staticProps ); return Constructor; }; }();
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck( instance, Constructor ) { if ( !( instance instanceof Constructor ) ) { throw new TypeError( "Cannot call a class as a function" ); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function _possibleConstructorReturn( self, call ) { if ( !self ) { throw new ReferenceError( "this hasn't been initialised - super() hasn't been called" ); } return call && ( typeof call === "object" || typeof call === "function" ) ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits( subClass, superClass ) { if ( typeof superClass !== "function" && superClass !== null ) { throw new TypeError( "Super expression must either be null or a function, not " + typeof superClass ); } subClass.prototype = Object.create( superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } } ); if ( superClass ) Object.setPrototypeOf ? Object.setPrototypeOf( subClass, superClass ) : subClass.__proto__ = superClass; }
 
-var App = function (_React$Component) {
-    _inherits(App, _React$Component);
+var App = function ( _React$Component )
+{
+    _inherits( App, _React$Component );
 
-    function App() {
-        _classCallCheck(this, App);
+    function App()
+    {
+        _classCallCheck( this, App );
 
-        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+        var _this = _possibleConstructorReturn( this, ( App.__proto__ || Object.getPrototypeOf( App ) ).call( this ) );
 
         _this.state = {
             data: []
@@ -22,26 +24,31 @@ var App = function (_React$Component) {
         return _this;
     }
 
-    _createClass(App, [{
+    _createClass( App, [{
         key: 'componentDidMount',
-        value: function componentDidMount() {
+        value: function componentDidMount()
+        {
             var _this2 = this;
 
-            fetch('http://ickata.net/sag/api/staff/bonuses/').then(function (response) {
+            fetch( 'http://ickata.net/sag/api/staff/bonuses/' ).then( function ( response )
+            {
                 return response.json();
-            }).then(function (data) {
-                console.log(data.rows);
-                console.log(data.columns);
-                _this2.setState({ data: data.rows });_this2.setState({ data: data.columns });
-            });
+            } ).then( function ( data )
+            {
+                console.log( data.rows );
+                console.log( data.columns );
+                _this2.setState( { data: data.rows } ); _this2.setState( { data: data.columns } );
+            } );
         }
     }, {
         key: 'render',
-        value: function render() {
+        value: function render()
+        {
 
-            this.state.data.map(function (dynamicData, key) {
+            this.state.data.map( function ( dynamicData, key )
+            {
                 var data = [{
-                    columns: [0], this: dynaimcData.fullName
+                    columns: [0], this: dynamicData.fullName
                 }, {
                     columns: [1], this: dynamicData.jobTitile
                 }, {
@@ -49,7 +56,7 @@ var App = function (_React$Component) {
                 }, {
                     columns: [3], this: dynamicData.bonus
                 }];
-            });
+            } );
 
             var columns = [{
                 Header: 'Full name',
@@ -114,7 +121,8 @@ var App = function (_React$Component) {
                                 'tbody',
                                 null,
                                 ' ',
-                                this.state.data.map(function (dynamicData) {
+                                this.state.data.map( function ( dynamicData )
+                                {
                                     return React.createElement(
                                         'tr',
                                         { className: 'trow' },
@@ -146,20 +154,20 @@ var App = function (_React$Component) {
                                             ' '
                                         )
                                     );
-                                })
+                                } )
                             )
                         )
                     )
                 )
             );
         }
-    }]);
+    }] );
 
     return App;
-}(React.Component);
+}( React.Component );
 
-ReactDOM.render(React.createElement(
+ReactDOM.render( React.createElement(
     'div',
     { id: 'container' },
-    React.createElement(App, null)
-), document.querySelector('body'));
+    React.createElement( App, null )
+), document.querySelector( 'body' ) );
