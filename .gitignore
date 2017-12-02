@@ -286,3 +286,15 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+
+# Visual Studio configuration files
+*.sqlite
+*.config
+*.config
+.vs/sag-js-training2/v15/.suo
+.vs/slnx.sqlite
+.vs/slnx.sqlite
+.vs/slnx.sqlite
+*.json
+*.sqlite
+.vs/slnx.sqlite
