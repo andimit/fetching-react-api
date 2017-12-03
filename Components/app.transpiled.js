@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var _createClass = function () { function defineProperties( target, props ) { for ( var i = 0; i < props.length; i++ ) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ( "value" in descriptor ) descriptor.writable = true; Object.defineProperty( target, descriptor.key, descriptor ); } } return function ( Constructor, protoProps, staticProps ) { if ( protoProps ) defineProperties( Constructor.prototype, protoProps ); if ( staticProps ) defineProperties( Constructor, staticProps ); return Constructor; }; }();
 
@@ -26,7 +26,7 @@ var App = function ( _React$Component )
     }
 
     _createClass( App, [{
-        key: 'componentDidMount',
+        key: "componentDidMount",
         value: function componentDidMount()
         {
             var _this2 = this;
@@ -40,102 +40,64 @@ var App = function ( _React$Component )
             } );
         }
     }, {
-        key: 'render',
+        key: "render",
         value: function render()
         {
 
-            this.state.columns.map( function ( dynamicData, key )
-            {
-                var data = [{
-                    columns: [0], this: dynamicData.fullName
-                }, {
-                    columns: [1], this: dynamicData.jobTitile
-                }, {
-                    columns: [2], this: dynamicData.age
-                }, {
-                    columns: [3], this: dynamicData.bonus
-                }];
-            } );
-
-            var columns = [{
-                Header: 'Full name',
-                accessor: 'fullName'
-            }, {
-                Header: 'Job title',
-                accessor: 'jobTitile'
-            }, {
-                Header: 'Age',
-                accessor: 'age'
-            }, {
-                Header: 'Bonus',
-                accessor: 'bonus'
-            }];
-
             return React.createElement(
-                'div',
-                { id: 'container', className: 'container' },
+                "div",
+                { id: "container", className: "container" },
                 React.createElement(
-                    'h1',
+                    "h1",
                     null,
-                    'Final Table'
+                    "Final Table with React JS"
                 ),
                 React.createElement(
-                    'table',
-                    { className: 'table' },
+                    "table",
+                    { className: "table" },
                     React.createElement(
-                        'thead',
+                        "thead",
                         null,
                         React.createElement(
-                            'tr',
+                            "tr",
                             null,
-                            React.createElement(
-                                'th',
-                                null,
-                                'Full Name'
-                            ),
-                            React.createElement(
-                                'th',
-                                null,
-                                'Job Title'
-                            ),
-                            React.createElement(
-                                'th',
-                                null,
-                                'Age'
-                            ),
-                            React.createElement(
-                                'th',
-                                null,
-                                'Bonus'
-                            )
+                            " ",
+                            this.state.columns.map( function ( column, index )
+                            {
+                                return React.createElement(
+                                    "th",
+                                    null,
+                                    column
+                                );
+                            } )
                         )
                     ),
                     React.createElement(
-                        'tbody',
+                        "tbody",
                         null,
-                        ' ',
+                        " ",
                         this.state.rows.map( function ( row )
                         {
                             return React.createElement(
-                                'tr',
+                                "tr",
                                 null,
                                 React.createElement(
-                                    'td',
+                                    "td",
                                     null,
                                     row[0]
                                 ),
                                 React.createElement(
-                                    'td',
+                                    "td",
                                     null,
                                     row[1]
                                 ),
                                 React.createElement(
-                                    'td',
+                                    "td",
                                     null,
                                     row[2]
                                 ),
                                 React.createElement(
-                                    'td',
+                                    "td",
                                     null,
                                     row[3]
                                 )
@@ -151,7 +113,7 @@ var App = function ( _React$Component )
 }( React.Component );
 
 ReactDOM.render( React.createElement(
-    'div',
-    { id: 'container' },
+    "div",
+    { id: "container" },
     React.createElement( App, null )
 ), document.querySelector( 'body' ) );
