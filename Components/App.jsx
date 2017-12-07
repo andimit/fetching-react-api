@@ -44,7 +44,7 @@ class App extends React.Component
                     <tbody> {
                         this.state.rows.map( row => (
                             <tr>{row.map( cell => (
-                                <td>{cell}</td>
+                                <td>{typeof cell === 'number' ? cell.toFixed( 2 ) : cell}</td>
                             ) )}
                             </tr>
                         ) )

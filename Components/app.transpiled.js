@@ -86,7 +86,7 @@ var App = function ( _React$Component )
                                     return React.createElement(
                                         "td",
                                         null,
-                                        cell
+                                        typeof cell === 'number' ? cell.toFixed( 2 ) : cell
                                     );
                                 } )
                             );
