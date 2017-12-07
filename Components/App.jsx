@@ -42,12 +42,10 @@ class App extends React.Component
                         </tr>
                     </thead>
                     <tbody> {
-                        this.state.rows.map(( row ) => (
-                            <tr>
-                                <td>{row[0]}</td>
-                                <td>{row[1]}</td>
-                                <td>{row[2]}</td>
-                                <td>{row[3]}</td>
+                        this.state.rows.map( row => (
+                            <tr>{row.map( cell => (
+                                <td>{cell}</td>
+                            ) )}
                             </tr>
                         ) )
                     }

@@ -81,26 +81,14 @@ var App = function ( _React$Component )
                             return React.createElement(
                                 "tr",
                                 null,
-                                React.createElement(
-                                    "td",
-                                    null,
-                                    row[0]
-                                ),
-                                React.createElement(
-                                    "td",
-                                    null,
-                                    row[1]
-                                ),
-                                React.createElement(
-                                    "td",
-                                    null,
-                                    row[2]
-                                ),
-                                React.createElement(
-                                    "td",
-                                    null,
-                                    row[3]
-                                )
+                                row.map( function ( cell )
+                                {
+                                    return React.createElement(
+                                        "td",
+                                        null,
+                                        cell
+                                    );
+                                } )
                             );
                         } )
                     )

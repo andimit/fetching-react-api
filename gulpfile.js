@@ -12,7 +12,7 @@ gulp.task( 'transpile', function ()
         } ) )
         .pipe( rename( function ( path )
         {
-            if ( path.dirname == 'HelloFinalApp/Components' )
+            if ( path.dirname == 'fetching-react-api/Components' )
             {
                 path.basename += '.transpiled';
             } else if ( path.dirname == 'Components' )
