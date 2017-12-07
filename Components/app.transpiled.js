@@ -54,7 +54,7 @@ var App = function ( _React$Component )
                 ),
                 React.createElement(
                     "table",
-                    { className: "table" },
+                    { className: "datagrid" },
                     React.createElement(
                         "thead",
                         null,

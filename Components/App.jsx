@@ -30,7 +30,7 @@ class App extends React.Component
         return (
             <div id="container" className="container">
                 <h1>Final Table with React JS</h1>
-                <table className="table">
+                <table className="datagrid">
                     <thead>
                         <tr> {
                             this.state.columns.map(( column, index ) =>
